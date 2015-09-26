@@ -1,0 +1,30 @@
+{
+  "name": "smartBin",
+  "version": "1.0.0",
+  "description": "An app for smart disposal of waste using public trash bins",
+  "main": "index.js",
+  "dependencies": {
+    "grunt": "^0.4.5"
+  },
+  "devDependencies": {
+    "grunt-contrib-requirejs": "~0.4.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vin18/SmartBin"
+  },
+  "keywords": [
+    "TFG2015",
+    "GHCI",
+    "ABI"
+  ],
+  "author": "Vinaya Mandke",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vin18/SmartBin/issues"
+  },
+  "homepage": "https://github.com/vin18/SmartBin"
+}

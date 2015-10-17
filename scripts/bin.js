@@ -8,22 +8,34 @@ var {
   StyleSheet,
   Text,
   View,
+  Platform,
+  TouchableHighlight,
+  TouchableNativeFeedback,
 } = React;
 
 var Bin = React.createClass({
 	render: function() {
+    var TouchableElement = TouchableHighlight;
+    if (Platform.OS === 'android') {
+      TouchableElement = TouchableNativeFeedback;
+    }
     var binStyle = this.getBackgroundColor(this.props.bin.fillLevel)
     return (
-      <View style={styles.container}>
-        <View style={binStyle}>
-          <View style={styles.binData}>
-            <Text style={styles.location}>{this.props.bin.location}</Text>
-            <Text style={styles.binID}>{this.props.bin.binID}</Text>
+      <View>
+      <TouchableElement
+          onPress={this.props.onSelect}>
+          <View style={styles.container}>
+            <View style={binStyle}>
+              <View style={styles.binData}>
+                <Text style={styles.location}>{this.props.bin.location}</Text>
+                <Text style={styles.binID}>{this.props.bin.binID}</Text>
+              </View>
+              <View style={styles.fillLevel}>
+                <Text style={styles.location}>{this.props.bin.fillLevel}</Text>
+              </View>
+            </View>
           </View>
-          <View style={styles.fillLevel}>
-            <Text style={styles.location}>{this.props.bin.fillLevel}</Text>
-          </View>
-        </View>
+        </TouchableElement>
       </View>
     );
   },

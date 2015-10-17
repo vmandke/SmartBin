@@ -12,6 +12,7 @@ var {
 
 
 var MainScreen = require('./scripts/MainScreen');
+var BinScreen = require('./scripts/BinScreen')
 var _navigator;
 BackAndroid.addEventListener('hardwareBackPress', () => {
   if (_navigator && _navigator.getCurrentRoutes().length > 1) {
@@ -27,7 +28,23 @@ var RouteMapper = function(route, navigationOperations, onComponentRef) {
     return (
       <MainScreen navigator={navigationOperations}/>
     );
-  } 
+  } else if (route.name === 'Bin-Data') {
+    return (
+      <View style={{flex: 1}}>
+        <ToolbarAndroid
+          actions={[]}
+          onIconClicked={navigationOperations.pop}
+          style={styles.toolbar}
+          titleColor="white"
+          title={route.bin.title} />
+        <BinScreen
+          style={{flex: 1}}
+          navigator={navigationOperations}
+          bin={route.bin}
+        />
+      </View>
+    );
+  }
 };
 
 var AwesomeProject = React.createClass({

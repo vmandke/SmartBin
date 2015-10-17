@@ -14,6 +14,7 @@ var {
 var REQUEST_URL = 'https://demo4405532.mockable.io/smartBins/getBins';
 
 var Bin = require('./bin');
+var BinScreen = require('./BinScreen')
 
 var MainScreen = React.createClass({
   getInitialState: function() {
@@ -41,6 +42,23 @@ var MainScreen = React.createClass({
       .done();
   },
 
+  selectBin: function(bin: Object) {
+    console.log("SelectBin : ",bin);
+    if (Platform.OS === 'ios') {
+      this.props.navigator.push({
+        title: bin.id,
+        component: BinScreen,
+        passProps: {bin},
+      });
+    } else {
+        this.props.navigator.push({
+          title: 'Bin',
+          name: 'Bin-Data',
+          bin: bin,
+        });
+    }
+  },
+
   render: function() {
     if (!this.state.loaded) {
       return this.renderLoadingView();
@@ -65,9 +83,15 @@ var MainScreen = React.createClass({
     );
   },
 
-  renderBin: function(bin) {
+  renderBin: function(
+    bin: Object,
+    sectionID: number | string,
+    rowID: number | string
+  )  {
     return (
-      <Bin bin={bin} />
+      
+      <Bin bin={bin} onSelect={() => this.selectBin(bin)}/>
+      
     );
   },
 });

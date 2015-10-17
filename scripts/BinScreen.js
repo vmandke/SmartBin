@@ -1,5 +1,7 @@
 'use strict';
 
+var Calendar = require('./Calendar');
+
 var React = require('react-native');
 var {
   Image,
@@ -17,6 +19,7 @@ var BinScreen = React.createClass({
         <Text>
           Loading bin data...
         </Text>
+        <Calendar/>
       </View>
     );
 	}

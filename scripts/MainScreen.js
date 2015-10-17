@@ -8,6 +8,7 @@ var {
   StyleSheet,
   Text,
   View,
+  Platform
 } = React;
 
 

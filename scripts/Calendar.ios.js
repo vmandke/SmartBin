@@ -13,7 +13,7 @@ var {
  } = React;
 
 var Calendar = React.createClass({
-    
+
     getInitialState: function() {
       return {
         animated: true,
@@ -28,8 +28,8 @@ var Calendar = React.createClass({
   },
 
     onDateSelect: function (date) {
-        console.log(date);
         this._setModalVisible(false)
+        this.props.onSelectDate(date)
     },
     handleClick: function() {
         //need to render Calendar
@@ -71,7 +71,7 @@ var Calendar = React.createClass({
             <View style={styles.container}>
               <TouchableOpacity onPress={this.handleClick}>
                 <Text style={styles.instructions}>
-                  Click me
+                  {this.props.coverText}
                 </Text>
               </TouchableOpacity>
             </View>

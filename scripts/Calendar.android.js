@@ -10,16 +10,14 @@ var {
 
 var Calendar = React.createClass({
     handleClick: function () {
-      NativeModules.DateAndroid.showDatepicker(function() {}, function(date) {
-        console.log(date);
-      });
+      NativeModules.DateAndroid.showDatepicker(function() {}, this.props.onSelectDate);
     },
     render: function() {
         return (
             <View style={styles.container}>
               <TouchableOpacity onPress={this.handleClick}>
                 <Text style={styles.instructions}>
-                  Click me
+                  {this.props.coverText}
                 </Text>
               </TouchableOpacity>
             </View>

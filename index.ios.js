@@ -13,14 +13,18 @@ var TabNavigator = require('./build/react-native-tab-navigator/TabNavigator')
 var TabNavigatorItem = require('./build/react-native-tab-navigator/TabNavigatorItem')
 
 var AwesomeProject = React.createClass({
+  getInitialState: function () {
+    return {
+      selectedTab: 'BINS'
+    }
+  },
+
   render: function() {
     return (
       <TabNavigator>
         <TabNavigator.Item
-            selected={true}
-            title="Home"
-            badgeText="1"
-            onPress={() => this.setState({ selectedTab: 'home' })}>
+            selected={this.state.selectedTab === 'BINS'}
+            title="BINS"            onPress={() => this.setState({ selectedTab: 'BINS' })}>
 
                 <NavigatorIOS
                   style={styles.container}

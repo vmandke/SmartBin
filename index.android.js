@@ -52,14 +52,29 @@ var RouteMapper = function(route, navigationOperations, onComponentRef) {
 };
 
 var AwesomeProject = React.createClass({
+
+  getInitialState: function () {
+    return {
+      selectedTab: 'BINS'
+    }
+  },
+
   render: function() {
     var initialRoute = {name: 'bins', index: 0};
     return (
-      <Navigator
-        style={styles.container}
-        initialRoute={initialRoute}
-        renderScene={RouteMapper}
-      />
+       <TabNavigator>
+        <TabNavigator.Item
+            selected={this.state.selectedTab === 'BINS'}
+            title="BINS"
+            onPress={() => this.setState({ selectedTab: 'BINS' })}>
+
+              <Navigator
+                style={styles.container}
+                initialRoute={initialRoute}
+                renderScene={RouteMapper} />
+
+        </TabNavigator.Item>
+      </TabNavigator>
     );
   },
 });

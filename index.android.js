@@ -37,10 +37,12 @@ var RouteMapper = function(route, navigationOperations, onComponentRef) {
       <View style={{flex: 1}}>
         <ToolbarAndroid
           actions={[]}
+          logo={require('image!trash_24')}
+          navIcon={require('image!ic_arrow_back_black_24dp')}
           onIconClicked={navigationOperations.pop}
           style={styles.toolbar}
           titleColor="white"
-          title={route.bin.title} />
+          title={route.bin.id} />
         <BinScreen
           style={{flex: 1}}
           navigator={navigationOperations}
@@ -83,6 +85,10 @@ var styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
+  },
+  toolbar: {
+    backgroundColor: '#e9eaed',
+    height: 56,
   },
 });
 

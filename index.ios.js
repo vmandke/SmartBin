@@ -24,7 +24,8 @@ var AwesomeProject = React.createClass({
       <TabNavigator>
         <TabNavigator.Item
             selected={this.state.selectedTab === 'BINS'}
-            title="BINS"            onPress={() => this.setState({ selectedTab: 'BINS' })}>
+            title="BINS"
+            onPress={() => this.setState({ selectedTab: 'BINS' })}>
 
                 <NavigatorIOS
                   style={styles.container}

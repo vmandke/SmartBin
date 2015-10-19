@@ -74,7 +74,7 @@ var BinScreen = React.createClass({
     }
 
     return (
-      <View>
+      <View  style={styles.container}>
 
         <View style={styles.container}>
           <Bin bin={this.props.bin} />
@@ -94,6 +94,7 @@ var BinScreen = React.createClass({
 
 var styles = StyleSheet.create({
   container: {
+    paddingTop: 20,
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',

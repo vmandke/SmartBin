@@ -14,6 +14,10 @@ var {
 var MainScreen = require('./scripts/MainScreen');
 var BinScreen = require('./scripts/BinScreen')
 var _navigator;
+
+var TabNavigator = require('./build/react-native-tab-navigator/TabNavigator')
+var TabNavigatorItem = require('./build/react-native-tab-navigator/TabNavigatorItem')
+
 BackAndroid.addEventListener('hardwareBackPress', () => {
   if (_navigator && _navigator.getCurrentRoutes().length > 1) {
     _navigator.pop();

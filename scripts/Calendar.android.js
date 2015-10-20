@@ -1,5 +1,5 @@
 var React = require('react-native');
-var { 
+var {
   AppRegistry,
   StyleSheet,
   Text,
@@ -9,20 +9,21 @@ var {
  } = React;
 
 var Calendar = React.createClass({
-    handleClick: function () {
-      NativeModules.DateAndroid.showDatepicker(function() {}, this.props.onSelectDate);
-    },
-    render: function() {
-        return (
-            <View style={styles.container}>
-              <TouchableOpacity onPress={this.handleClick}>
-                <Text style={styles.instructions}>
-                  {this.props.coverText}
-                </Text>
-              </TouchableOpacity>
-            </View>
-        );
-    }
+  handleClick: function() {
+    NativeModules.DateAndroid.showDatepicker(function() {}, this.props.onSelectDate);
+  },
+
+  render: function() {
+    return (
+      <View style={styles.container}>
+        <TouchableOpacity onPress={this.handleClick}>
+          <Text style={styles.instructions}>
+            {this.props.coverText}
+          </Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
 });
 
 var styles = StyleSheet.create({

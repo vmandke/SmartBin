@@ -21,7 +21,17 @@ module.exports = function(grunt) {
             }
         }
     });
+
+    grunt.initConfig({
+        eslint: {
+            options: {
+                config: '.eslintrc',
+                reset: true
+            },
+            target: ['scripts/**/*.js']
+        }
+    });
      
-    grunt.registerTask('default', ['babel']);
+    grunt.registerTask('default', ['babel', 'eslint']);
 
 };

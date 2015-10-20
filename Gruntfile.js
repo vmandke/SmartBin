@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
 
     require('load-grunt-tasks')(grunt); // npm install --save-dev load-grunt-tasks 
-     
+
     grunt.initConfig({
         babel: {
             options: {
@@ -19,19 +19,18 @@ module.exports = function(grunt) {
                   extDot: 'first'   // Extensions in filenames begin after the first dot
                 }]
             }
-        }
-    });
+        },
 
-    grunt.initConfig({
         eslint: {
             options: {
                 config: '.eslintrc',
-                reset: true
+                reset: true,
+                quiet: true
             },
             target: ['scripts/**/*.js']
         }
     });
-     
+
     grunt.registerTask('default', ['babel', 'eslint']);
 
 };

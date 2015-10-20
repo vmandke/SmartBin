@@ -1,7 +1,7 @@
 var React = require('react-native');
-var CalendarView = require('react-native-calendar')
+var CalendarView = require('react-native-calendar');
 
-var { 
+var {
   AppRegistry,
   StyleSheet,
   Text,
@@ -14,37 +14,40 @@ var {
 
 var Calendar = React.createClass({
 
-    getInitialState: function() {
-      return {
-        animated: true,
-        modalVisible: false,
-        transparent: false,
-      };
-    },
+  getInitialState: function() {
+    return {
+      animated: true,
+      modalVisible: false,
+      transparent: false,
+    };
+  },
 
 
   _setModalVisible: function(visible) {
     this.setState({modalVisible: visible});
   },
 
-    onDateSelect: function (date) {
-        this._setModalVisible(false)
-        this.props.onSelectDate(date)
-    },
-    handleClick: function() {
-        //need to render Calendar
-        this._setModalVisible(true)
-    },
-    render: function() {
-      var modalBackgroundStyle = {
+  onDateSelect: function(date) {
+    this._setModalVisible(false);
+    this.props.onSelectDate(date);
+  },
+
+  handleClick: function() {
+    // need to render Calendar
+    this._setModalVisible(true);
+  },
+
+  render: function() {
+    var modalBackgroundStyle = {
       backgroundColor: this.state.transparent ? 'rgba(0, 0, 0, 0.5)' : '#f5fcff',
     };
+
     var innerContainerTransparentStyle = this.state.transparent
       ? {backgroundColor: '#fff', padding: 20}
       : null;
 
-        return (
-           <View>
+    return (
+        <View>
            <Modal
               animated={true}
               transparent={false}
@@ -75,10 +78,9 @@ var Calendar = React.createClass({
                 </Text>
               </TouchableOpacity>
             </View>
-
-         </View>
-        );
-    }
+        </View>
+    );
+  }
 });
 
 var styles = StyleSheet.create({

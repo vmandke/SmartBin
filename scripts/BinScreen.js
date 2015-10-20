@@ -14,7 +14,7 @@ var {
   WebView,
 } = React;
 
-var chartURL =  'https://demo5985216.mockable.io/getChart/'
+var chartURL =  'https://demo5985216.mockable.io/getChart/';
 
 var BinScreen = React.createClass({
   getInitialState: function() {
@@ -22,27 +22,25 @@ var BinScreen = React.createClass({
       startDate:false,
       endDate:false,
       datesSet:false,
-    }
+    };
   },
   startDate: 'StartDate',
   endDate: 'EndDate',
   imgBlob: null,
-  
+
   selectStartDate: function(date) {
-    console.log(date)
-    this.startDate = "Selected Start: " + date
+    this.startDate = 'Selected Start: ' + date;
     this.setState({startDate: true});
     if (this.state.endDate) {
-      this.fetchData()
+      this.fetchData();
     }
   },
 
   selectEndDate: function(date) {
-    console.log(date)
-    this.endDate = "Selected End: " + date
+    this.endDate = 'Selected End: ' + date;
     this.setState({endDate: true});
     if (this.state.startDate) {
-      this.fetchData()
+      this.fetchData();
     }
   },
 
@@ -50,7 +48,7 @@ var BinScreen = React.createClass({
     fetch(chartURL)
       .then((response) => response.json())
       .then((responseData) => {
-        this.imgBlob = responseData.imgBlob
+        this.imgBlob = responseData.imgBlob;
         this.setState({
           loaded: true,
         });
@@ -59,8 +57,7 @@ var BinScreen = React.createClass({
   },
 
   renderChartView: function() {
-    var blob = "data:image/png;base64,"+this.imgBlob
-    console.log(blob)
+    var blob = 'data:image/png;base64,' + this.imgBlob;
     return (
       <View style={styles.container}>
         <Image resizeMode={Image.resizeMode.stretch} source={{uri: blob, isStatic: true}} style={styles.image}/>
@@ -68,7 +65,7 @@ var BinScreen = React.createClass({
     );
   },
 
-	render: function() {
+  render: function() {
     if (this.state.loaded) {
       return this.renderChartView();
     }
@@ -89,7 +86,7 @@ var BinScreen = React.createClass({
         </View>
       </View>
     );
-	}
+  }
 });
 
 var styles = StyleSheet.create({

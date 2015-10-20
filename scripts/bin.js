@@ -14,12 +14,12 @@ var {
 } = React;
 
 var Bin = React.createClass({
-	render: function() {
+  render: function() {
     var TouchableElement = TouchableHighlight;
+    var binStyle = this.getBackgroundColor(this.props.bin.fillLevel);
     if (Platform.OS === 'android') {
       TouchableElement = TouchableNativeFeedback;
     }
-    var binStyle = this.getBackgroundColor(this.props.bin.fillLevel)
     return (
       <View>
       <TouchableElement
@@ -45,17 +45,17 @@ var Bin = React.createClass({
     var fill = parseFloat(fillLevel);
     var bgColorStyle;
     switch (true) {
-      case (fill >= 0.0 && fill <= 50):
-        bgColorStyle = styles.binContainerGreen;
-        break;
-      case (fill >= 51.0 && fill <= 70):
-        bgColorStyle = styles.binContainerAmber;
-        break;
-      case (fill >= 71.0 && fill <= 100):
-        bgColorStyle = styles.binContainerRed;
-        break;
-      default:
-        //error
+    case (fill >= 0.0 && fill <= 50):
+      bgColorStyle = styles.binContainerGreen;
+      break;
+    case (fill >= 51.0 && fill <= 70):
+      bgColorStyle = styles.binContainerAmber;
+      break;
+    case (fill >= 71.0 && fill <= 100):
+      bgColorStyle = styles.binContainerRed;
+      break;
+    default:
+      // error
     }
     return bgColorStyle;
   },
@@ -74,7 +74,7 @@ var styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: "#c0c0c0",
+    borderColor: '#c0c0c0',
     marginBottom: 2,
     marginTop: 2,
     backgroundColor: 'red',
@@ -84,7 +84,7 @@ var styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: "#c0c0c0",
+    borderColor: '#c0c0c0',
     marginBottom: 2,
     marginTop: 2,
     backgroundColor: 'green',
@@ -94,7 +94,7 @@ var styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: "#c0c0c0",
+    borderColor: '#c0c0c0',
     marginBottom: 2,
     marginTop: 2,
     backgroundColor: 'yellow',

@@ -12,7 +12,7 @@ var {
 } = React;
 
 
-var REQUEST_URL = 'https://demo4405532.mockable.io/smartBins/getBins';
+var REQUEST_URL = 'http://127.0.0.1:5000/smartBins/getBins';
 
 var Bin = require('./bin');
 var BinScreen = require('./BinScreen');

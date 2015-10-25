@@ -7,6 +7,23 @@ The bins show up in different colours to show their filled capacity while also t
 
 There are many steps you will have to follow once you clone this repository.
 
+ReactJS setup
+
+    Please follow the steps here https://facebook.github.io/react-native/docs/getting-started.html#content
+    Ensure that following works:-
+        >> react-native 
+
+Running on simulators (IOS)
+
+        Open the ios/AwesomeProject.xcodeproj
+        And Run the App
+
+Running on emulator (AND)
+
+        >> start the emulator
+        >> cd to the root dir of the project
+        >> react-native run-android
+
 Setup API KEY :
 
     1. First of all get a Zomato-Api Key

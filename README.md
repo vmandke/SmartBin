@@ -24,6 +24,10 @@ Running on emulator (AND)
         >> cd to the root dir of the project
         >> react-native run-android
 
+Installing all the dependencies
+
+        >> npm install
+
 Setup API KEY :
 
     1. First of all get a Zomato-Api Key

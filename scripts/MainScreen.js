@@ -14,6 +14,7 @@ var {
 
 var Bin = require('./bin');
 var BinScreen = require('./BinScreen');
+var GooglePlacesAutocomplete = require('./GooglePlacesSearch');
 
 var MainScreen = React.createClass({
   getInitialState: function() {
@@ -102,6 +103,13 @@ var MainScreen = React.createClass({
   },
 
   render: function() {
+    var styleSearchBox;
+    if (Platform.OS === 'ios') {
+      styleSearchBox = styles.searchBoxIOS;
+    }
+    else {
+      styleSearchBox = styles.searchBoxAND;
+    }
     if (!this.state.loaded) {
       return this.renderLoadingView();
       if (this.state.location !== 'unknown') {
@@ -110,11 +118,16 @@ var MainScreen = React.createClass({
     }
 
     return (
-      <ListView
-        dataSource={this.state.dataSource}
-        renderRow={this.renderBin}
-        style={styles.listView}
-      />
+      <View>
+        <View style={styleSearchBox}>
+          <GooglePlacesAutocomplete />
+        </View>
+        <ListView
+          dataSource={this.state.dataSource}
+          renderRow={this.renderBin}
+          style={styles.listView}
+        />
+      </View>
     );
   },
 
@@ -152,9 +165,13 @@ var styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
   listView: {
-    paddingTop: 20,
     backgroundColor: '#F5FCFF',
   },
+  searchBoxIOS: {
+    paddingTop: 70,
+  },
+  searchBoxAND: {
+  }
 });
 
 function getRequestURL() {

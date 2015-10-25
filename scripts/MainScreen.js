@@ -12,9 +12,6 @@ var {
 } = React;
 
 
-// var REQUEST_URL = 'http://10.0.2.2:5000/smartBins/getBins';
-var REQUEST_URL = 'http://127.0.0.1:5000/smartBins/getBins';
-
 var Bin = require('./bin');
 var BinScreen = require('./BinScreen');
 
@@ -38,25 +35,34 @@ var MainScreen = React.createClass({
   },
 
   fetchLocation: function() {
-    var location;
-    var promise = new Promise(function(resolve, reject) {
-      navigator.geolocation.getCurrentPosition(
-        function(position) {
-          console.log(position);
-          this.setState({location: position.coords});
-          resolve(position);
-        }.bind(this),
-        function(err) {
-          alert(err.code, err.message);
-        }.bind(this)
-      );
+    var positionLL = {latitude: 18.5145387, longitude: 73.81554};
+    return new Promise(function(resolve, reject) {
+      if (Platform.OS === 'ios') {
+        navigator.geolocation.getCurrentPosition(
+          function(position) {
+            var positionLL = {};
+            positionLL.latitude = position.coords.latitude;
+            positionLL.longitude = position.coords.longitude;
+            console.log(positionLL);
+            this.setState({location: positionLL});
+            resolve(positionLL);
+          }.bind(this),
+          function(err) {
+            alert(err.code, err.message);
+          }.bind(this),
+          { enableHighAccuracy: true }
+        );
+      }
+      else {
+        this.setState({location: positionLL});
+        resolve(positionLL);
+      }
     }.bind(this));
-    return promise;
   },
 
   fetchData: function() {
-    console.log(this.state.location);
-    fetch(REQUEST_URL,{
+    var url = getRequestURL();
+    fetch(url,{
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -150,5 +156,16 @@ var styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
 });
+
+function getRequestURL() {
+  var url;
+  if (Platform.OS === 'ios') {
+    url = 'http://127.0.0.1:5000/smartBins/getBins';
+  }
+  else {
+    url = 'http://10.0.2.2:5000/smartBins/getBins';
+  }
+  return url;
+}
 
 module.exports = MainScreen;

@@ -72,7 +72,6 @@ var BinScreen = React.createClass({
 
     return (
       <View  style={styles.container}>
-
         <View style={styles.container}>
           <Bin bin={this.props.bin} />
           <Text>

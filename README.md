@@ -9,7 +9,7 @@ There are many steps you will have to follow once you clone this repository.
 
 ReactJS setup
 
-    Please follow the steps here https://facebook.github.io/react-native/docs/getting-started.html#content
+    Please follow the Official steps from  [here](https://facebook.github.io/react-native/docs/getting-started.html#content) 
     Ensure that following works:-
         >> react-native 
 

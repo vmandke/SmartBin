@@ -27,3 +27,4 @@ project.xcworkspace
 npm-debug.log
 /android/.gradle/2.4/
 node_modules/
+smart-bin-api/flask/

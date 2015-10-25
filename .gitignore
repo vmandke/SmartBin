@@ -25,6 +25,7 @@ project.xcworkspace
 # node.js
 #
 npm-debug.log
+smart-bin-api/config.json
 /android/.gradle/2.4/
 node_modules/
 smart-bin-api/flask/

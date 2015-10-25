@@ -12,6 +12,7 @@ var {
 } = React;
 
 
+// var REQUEST_URL = 'http://10.0.2.2:5000/smartBins/getBins';
 var REQUEST_URL = 'http://127.0.0.1:5000/smartBins/getBins';
 
 var Bin = require('./bin');
@@ -24,23 +25,56 @@ var MainScreen = React.createClass({
         rowHasChanged: (row1, row2) => row1 !== row2,
       }),
       loaded: false,
+      location: 'unknown',
     };
   },
 
   componentDidMount: function() {
-    this.fetchData();
+    this.fetchLocation()
+    .then((response) => {
+      console.log('resolved');
+      this.fetchData();
+    });
+  },
+
+  fetchLocation: function() {
+    var location;
+    var promise = new Promise(function(resolve, reject) {
+      navigator.geolocation.getCurrentPosition(
+        function(position) {
+          console.log(position);
+          this.setState({location: position.coords});
+          resolve(position);
+        }.bind(this),
+        function(err) {
+          alert(err.code, err.message);
+        }.bind(this)
+      );
+    }.bind(this));
+    return promise;
   },
 
   fetchData: function() {
-    fetch(REQUEST_URL)
-      .then((response) => response.json())
-      .then((responseData) => {
-        this.setState({
-          dataSource: this.state.dataSource.cloneWithRows(responseData.bins),
-          loaded: true,
-        });
+    console.log(this.state.location);
+    fetch(REQUEST_URL,{
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        coords: this.state.location,
       })
-      .done();
+    })
+    .then((response) => response.json())
+    .then((responseData) => {
+      this.setState({
+        dataSource: this.state.dataSource.cloneWithRows(responseData.bins),
+        loaded: true,
+      });
+    })
+    .catch( (error) => console.log(error) )
+    .done();
   },
 
   selectBin: function(bin: Object) {
@@ -64,6 +98,9 @@ var MainScreen = React.createClass({
   render: function() {
     if (!this.state.loaded) {
       return this.renderLoadingView();
+      if (this.state.location !== 'unknown') {
+        console.log('We need to now fetch Data');
+      }
     }
 
     return (
@@ -76,10 +113,14 @@ var MainScreen = React.createClass({
   },
 
   renderLoadingView: function() {
+    var loadingString = 'Fetching Location...';
+    if (this.state.location !== 'unknown') {
+      loadingString = 'Loading bins...';
+    }
     return (
       <View style={styles.container}>
         <Text>
-          Loading bins...
+          {loadingString}
         </Text>
       </View>
     );

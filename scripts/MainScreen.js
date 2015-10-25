@@ -102,6 +102,17 @@ var MainScreen = React.createClass({
     }
   },
 
+  onSearchSelect: function(data, details) {
+    var detLL = details.geometry.location;
+    var positionLL = {};
+    positionLL.latitude = detLL.lat;
+    positionLL.longitude = detLL.lng;
+    this.setState({location:positionLL, loaded: false});
+    setTimeout(function() {
+      this.fetchData();
+    }.bind(this), 0);
+  },
+
   render: function() {
     var styleSearchBox;
     if (Platform.OS === 'ios') {
@@ -120,7 +131,7 @@ var MainScreen = React.createClass({
     return (
       <View>
         <View style={styleSearchBox}>
-          <GooglePlacesAutocomplete />
+          <GooglePlacesAutocomplete onSearchSelect={this.onSearchSelect}/>
         </View>
         <ListView
           dataSource={this.state.dataSource}

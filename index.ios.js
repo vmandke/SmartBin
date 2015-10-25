@@ -9,6 +9,7 @@ var {
 
 
 var MainScreen = require('./scripts/MainScreen');
+var OptimalPath = require('./scripts/OptimalPathScreen');
 var TabNavigator = require('./build/react-native-tab-navigator/TabNavigator')
 var TabNavigatorItem = require('./build/react-native-tab-navigator/TabNavigatorItem')
 
@@ -33,6 +34,14 @@ var AwesomeProject = React.createClass({
                     title: 'Bins',
                     component: MainScreen,
                   }}/>
+
+        </TabNavigator.Item>
+        <TabNavigator.Item
+            selected={this.state.selectedTab === 'OPTIMAL_PATH'}
+            title="OPTIMAL PATH"
+            onPress={() => this.setState({ selectedTab: 'OPTIMAL_PATH' })}>
+
+                <OptimalPath />
 
         </TabNavigator.Item>
       </TabNavigator>

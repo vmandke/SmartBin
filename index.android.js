@@ -12,6 +12,7 @@ var {
 
 
 var MainScreen = require('./scripts/MainScreen');
+var OptimalPath = require('./scripts/OptimalPathScreen');
 var BinScreen = require('./scripts/BinScreen')
 var _navigator;
 
@@ -74,6 +75,14 @@ var AwesomeProject = React.createClass({
                 style={styles.container}
                 initialRoute={initialRoute}
                 renderScene={RouteMapper} />
+
+        </TabNavigator.Item>
+        <TabNavigator.Item
+            selected={this.state.selectedTab === 'OPTIMAL_PATH'}
+            title="OPTIMAL PATH"
+            onPress={() => this.setState({ selectedTab: 'OPTIMAL_PATH' })}>
+
+            <OptimalPath />
 
         </TabNavigator.Item>
       </TabNavigator>

@@ -13,12 +13,14 @@ Setup API KEY :
 3. Add the above KEY as 'user_key' in this file.
 
 Setup for the server :
-1. This server runs on Python2.7  
+This server runs on Python2.7  
+
     >> sudo easy_install virtualenv
     >> cd smart-bin-api
     >> virtualenv flask
     >> flask/bin/pip install flask
     >> source flask/bin/activate
     >> python app.py 
+
   This will start the server
 

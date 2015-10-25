@@ -8,7 +8,8 @@
   "dependencies": {
     "react-native": "^0.11.4",
     "react-native-calendar": "^0.5.0",
-    "react-native-date": "^1.0.1"
+    "react-native-date": "^1.0.1",
+    "react-native-google-places-autocomplete": "^1.0.11"
   },
   "devDependencies": {
     "babel-eslint": "^4.1.3",

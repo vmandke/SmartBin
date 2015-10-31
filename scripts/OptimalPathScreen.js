@@ -38,25 +38,25 @@ var OptimalPath = React.createClass({
 
     Store.getBinData()
     .then((data) => {
-        var latitudeDelta = Math.max.apply(null, data.bins.map(function(bin) {
-          return Math.abs(this.state.region.latitude - bin.latitude)
-        }.bind(this)));
-        var longitudeDelta = Math.max.apply(null, data.bins.map(function(bin) {
-          return Math.abs(this.state.region.longitude - bin.longitude)
-        }.bind(this)));
-        var region = {};
-        region.longitude = this.state.region.longitude;
-        region.latitude = this.state.region.latitude;
-        region.latitudeDelta = latitudeDelta;
-        region.longitudeDelta = longitudeDelta;
-        this.setState({ region: region, markers: data.bins });
+      var latitudeDelta = Math.max.apply(null, data.bins.map(function(bin) {
+        return Math.abs(this.state.region.latitude - bin.latitude);
+      }.bind(this)));
+      var longitudeDelta = Math.max.apply(null, data.bins.map(function(bin) {
+        return Math.abs(this.state.region.longitude - bin.longitude);
+      }.bind(this)));
+      var region = {};
+      region.longitude = this.state.region.longitude;
+      region.latitude = this.state.region.latitude;
+      region.latitudeDelta = latitudeDelta;
+      region.longitudeDelta = longitudeDelta;
+      this.setState({ region: region, markers: data.bins });
     });
   },
   render: function() {
     return (
       <View style={styles.container}>
-        <MapView 
-          style={styles.map} 
+        <MapView
+          style={styles.map}
           region={this.state.region}
           annotations={this.state.markers}/>
       </View>

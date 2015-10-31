@@ -7,13 +7,58 @@ var {
   View
 } = React;
 
+
+var Store = require('./Store');
+
 var OptimalPath = React.createClass({
+  getInitialState: function() {
+    return {
+      region: {
+        latitude: 0,
+        longitude: 0,
+        latitudeDelta: 0,
+        longitudeDelta: 0,
+      },
+      markers: [],
+    };
+  },
+  componentDidMount: function() {
+    Store.getLocation()
+    .then((data) => {
+      console.log('Store::', data);
+      this.setState({
+        region: {
+          longitude: parseFloat(data.longitude),
+          latitude: parseFloat(data.latitude),
+          latitudeDelta: 0.1,
+          longitudeDelta: 0.1,
+        }
+      });
+    });
+
+    Store.getBinData()
+    .then((data) => {
+        var latitudeDelta = Math.max.apply(null, data.bins.map(function(bin) {
+          return Math.abs(this.state.region.latitude - bin.latitude)
+        }.bind(this)));
+        var longitudeDelta = Math.max.apply(null, data.bins.map(function(bin) {
+          return Math.abs(this.state.region.longitude - bin.longitude)
+        }.bind(this)));
+        var region = {};
+        region.longitude = this.state.region.longitude;
+        region.latitude = this.state.region.latitude;
+        region.latitudeDelta = latitudeDelta;
+        region.longitudeDelta = longitudeDelta;
+        this.setState({ region: region, markers: data.bins });
+    });
+  },
   render: function() {
     return (
       <View style={styles.container}>
-        <Text>
-          Will Load Map here
-        </Text>
+        <MapView 
+          style={styles.map} 
+          region={this.state.region}
+          annotations={this.state.markers}/>
       </View>
       );
   }
@@ -29,7 +74,7 @@ var styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
   map: {
-    height: 150,
+    flex: 1,
     margin: 10,
     borderWidth: 1,
     borderColor: '#000000',

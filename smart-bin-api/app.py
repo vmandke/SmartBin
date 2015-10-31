@@ -27,6 +27,9 @@ def get_tasks():
         bin = {}
         bin['fillLevel'] = float(nearby_bins[key]['restaurant']['user_rating']['aggregate_rating']) * 20
         bin['location'] = nearby_bins[key]['restaurant']['location']['locality']
+        bin['title'] = nearby_bins[key]['restaurant']['name']
+        bin['longitude'] = nearby_bins[key]['restaurant']['location']['longitude']
+        bin['latitude'] = nearby_bins[key]['restaurant']['location']['latitude']
         bin['binID'] = nearby_bins[key]['restaurant']['id']
         bins.append(bin)
         

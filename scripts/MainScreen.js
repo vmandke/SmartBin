@@ -1,6 +1,7 @@
 'use strict';
 
 var React = require('react-native');
+var PubSub = require('pubsub-js');
 var {
   AppRegistry,
   Image,
@@ -15,6 +16,7 @@ var {
 var Bin = require('./bin');
 var BinScreen = require('./BinScreen');
 var GooglePlacesAutocomplete = require('./GooglePlacesSearch');
+var Store = require('./Store');
 
 var MainScreen = React.createClass({
   getInitialState: function() {
@@ -28,6 +30,9 @@ var MainScreen = React.createClass({
   },
 
   componentDidMount: function() {
+    // Initailaize the Store
+    Store.init();
+
     this.fetchLocation()
     .then((response) => {
       console.log('resolved');
@@ -46,6 +51,7 @@ var MainScreen = React.createClass({
             positionLL.longitude = position.coords.longitude;
             console.log(positionLL);
             this.setState({location: positionLL});
+            PubSub.publish('location', positionLL);
             resolve(positionLL);
           }.bind(this),
           function(err) {
@@ -56,6 +62,7 @@ var MainScreen = React.createClass({
       }
       else {
         this.setState({location: positionLL});
+        PubSub.publish('location', positionLL);
         resolve(positionLL);
       }
     }.bind(this));
@@ -75,6 +82,7 @@ var MainScreen = React.createClass({
     })
     .then((response) => response.json())
     .then((responseData) => {
+      PubSub.publish('bins', responseData);
       this.setState({
         dataSource: this.state.dataSource.cloneWithRows(responseData.bins),
         loaded: true,

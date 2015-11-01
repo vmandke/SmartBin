@@ -5,6 +5,10 @@ Keeping environment in mind, Smartbin app is an innovative solution which tells 
 The bins show up in different colours to show their filled capacity while also throwing up the fastest route to get to them.
 
 
+
+[![Demo Viedo](http://img.youtube.com/vi/LwzVSQUW-rg/0.jpg)](http://www.youtube.com/watch?v=LwzVSQUW-rg)
+
+
 There are many steps you will have to follow once you clone this repository.
 
 ReactJS setup :: https://facebook.github.io/react-native/docs/getting-started.html#content 
@@ -27,6 +31,11 @@ Running on emulator (AND)
 Installing all the dependencies
 
         >> npm install
+        
+Running the grunt task
+        
+        >> grunt
+
 
 Setup API KEY :
 

@@ -1,0 +1,81 @@
+{
+  "_args": [
+    [
+      "react-native-charts",
+      "/Users/synerzip/JavaScript/ReactProjects/AwesomeProject"
+    ]
+  ],
+  "_from": "react-native-charts@*",
+  "_id": "react-native-charts@1.0.10",
+  "_inCache": true,
+  "_location": "/react-native-charts",
+  "_nodeVersion": "0.12.7",
+  "_npmUser": {
+    "email": "dscanlonpa@gmail.com",
+    "name": "danscan"
+  },
+  "_npmVersion": "2.11.3",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "react-native-charts",
+    "raw": "react-native-charts",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "*",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/react-native-charts/-/react-native-charts-1.0.10.tgz",
+  "_shasum": "8123ff8bfc6007be7a496f9f5534c3abbccff7ca",
+  "_shrinkwrap": null,
+  "_spec": "react-native-charts",
+  "_where": "/Users/synerzip/JavaScript/ReactProjects/AwesomeProject",
+  "author": {
+    "name": "PrazAs Learning Inc"
+  },
+  "bugs": {
+    "url": "https://github.com/PrazAs/react-native-charts/issues"
+  },
+  "dependencies": {
+    "memoizee": "^0.3.9",
+    "underscore": "^1.8.3"
+  },
+  "description": "Delightfully-animated data visualization.",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "8123ff8bfc6007be7a496f9f5534c3abbccff7ca",
+    "tarball": "http://registry.npmjs.org/react-native-charts/-/react-native-charts-1.0.10.tgz"
+  },
+  "gitHead": "d69b40df0f6e7860cded712509072219b07af27b",
+  "homepage": "https://github.com/PrazAs/react-native-charts#readme",
+  "installable": true,
+  "keywords": [
+    "bar",
+    "chart",
+    "native",
+    "react",
+    "react-component",
+    "react-native"
+  ],
+  "license": "ISC",
+  "main": "src/index.js",
+  "maintainers": [
+    {
+      "name": "danscan",
+      "email": "dscanlonpa@gmail.com"
+    }
+  ],
+  "name": "react-native-charts",
+  "optionalDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PrazAs/react-native-charts.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.10"
+}

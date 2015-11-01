@@ -17,6 +17,25 @@ module.exports = function(grunt) {
                   dest: 'build/react-native-tab-navigator/',   // Destination path prefix.
                   ext: '.js',   // Dest filepaths will have this extension.
                   extDot: 'first'   // Extensions in filenames begin after the first dot
+                },
+                {
+                  expand: true,     // Enable dynamic expansion.
+                  cwd: 'scripts/third_party/react-native-charts/src/',      // Src matches are relative to this path.
+                  src: ['*.js','*/**/*.js'],
+                  dest: 'build/react-native-charts/',   // Destination path prefix.
+                  ext: '.js',   // Dest filepaths will have this extension.
+                  extDot: 'first'   // Extensions in filenames begin after the first dot
+                }]
+            }
+        },
+
+        copy: {
+            main: {
+                files: [{
+                    expand: true,
+                    cwd: 'scripts/third_party/react-native-charts/node_modules/',
+                    src: ['**'],
+                    dest: 'build/react-native-charts/node_modules/'
                 }]
             }
         },
@@ -31,6 +50,7 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.registerTask('default', ['babel', 'eslint']);
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.registerTask('default', ['babel', 'eslint', 'copy']);
 
 };

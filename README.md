@@ -32,7 +32,7 @@ Installing all the dependencies
 
         >> npm install
         
-Running the grunt task
+Running the grunt tasks
         
         >> grunt
 

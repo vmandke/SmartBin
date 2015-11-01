@@ -62,8 +62,8 @@ var BinScreen = React.createClass({
       <View style={styles.container}>
         <BarChart
             dataSets={[
-              { 
-                fillColor: '#46b3f7', 
+              {
+                fillColor: '#46b3f7',
                 data: [
                   { value: 15 },
                   { value: 10 },
@@ -71,8 +71,8 @@ var BinScreen = React.createClass({
                   { value: 11 },
                 ]
               },
-              { 
-                fillColor: '#3386b9', 
+              {
+                fillColor: '#3386b9',
                 data: [
                   { value: 14 },
                   { value: 11 },
@@ -88,7 +88,7 @@ var BinScreen = React.createClass({
             style={{
               height: 300,
               margin: 15,
-        }}/>
+            }}/>
       </View>
     );
   },

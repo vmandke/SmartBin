@@ -35,6 +35,11 @@ def get_tasks():
         
     return jsonify({'bins': bins})
 
+@app.route('/smartBins/getBinData', methods=['POST'])
+def get_bin_data():
+    binId = request.json['binID']
+    return jsonify({values:[15,14,11,11,8,3,12,17]})
+
 if __name__ == '__main__':
     with open('config.json') as data_file:
         data = json.load(data_file)

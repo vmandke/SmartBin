@@ -11,7 +11,7 @@ The bins show up in different colours to show their filled capacity while also t
 
 There are many steps you will have to follow once you clone this repository.
 
-ReactJS setup :: https://facebook.github.io/react-native/docs/getting-started.html#content 
+React Native setup :: https://facebook.github.io/react-native/docs/getting-started.html#content 
 
     Please follow the Official steps for setup 
     Ensure that following works:-
